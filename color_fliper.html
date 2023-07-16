@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Color FLiper</title>
+    <style>
+      .container {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+      .btn-change-color {
+        padding: 1em;
+        border: none;
+        cursor: pointer;
+      }
+      .btn-change-color:active {
+        background-color: aqua;
+      }
+      #colorName {
+        color: white;
+        background-color: gainsboro;
+        padding: 0.3em;
+border-radius: 10px;
+    }
+    </style>
+  </head>
+  <body>
+    <!-- this page is for a color fliper-->
+
+    <div class="container">
+      <h1 id="colorName"></h1>
+      <button class="btn-change-color" id="btn-change-color">
+        Change Color
+      </button>
+    </div>
+
+    <script>
+      let currentColorNum;
+      let colorNum;
+      let colorsArray = [
+        "red",
+        "green",
+        "blue",
+        "yellow",
+        "orange",
+        "purple",
+        "pink",
+        "brown",
+        "black",
+        "white",
+      ];
+
+      const mybtn = document.getElementById("btn-change-color");
+      const colorName = document.getElementById("colorName");
+
+      mybtn.addEventListener("click", changeColorBtn);
+
+      function changeColorBtn() {
+        colorNum = Math.floor(Math.random() * colorsArray.length);
+
+        document.body.style.backgroundColor = colorsArray[colorNum];
+
+        colorName.style.backgroundColor = colorsArray[colorNum - 1];
+        colorName.textContent = document.body.style.backgroundColor;
+
+        currentColorNum = colorNum;
+        console.log(currentColorNum);
+      }
+    </script>
+  </body>
+</html>
